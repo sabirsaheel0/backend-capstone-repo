@@ -34,7 +34,7 @@ pipeline {
 
         stage('clean docker images') {
             steps {
-                sh 'docker rmi s${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${IMAGE_TAG}'
+                sh 'docker rmi ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${IMAGE_TAG}'
             }
         }
 
