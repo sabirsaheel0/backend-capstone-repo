@@ -20,7 +20,7 @@ pipeline {
                     sh 'echo ${pass} | docker login -u ${uname} --password-stdin'
                 }
 
-                sh 'docker push sabirsaheel0/backend-capstonet:${BUILD_NUMBER}'
+                sh 'docker push sabirsaheel0/backend-capstone:${BUILD_NUMBER}'
                 sh 'docker logout'
                 echo 'pushing docker image'
             }
