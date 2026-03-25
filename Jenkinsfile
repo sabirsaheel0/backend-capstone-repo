@@ -1,12 +1,18 @@
 pipeline {
     agent any
 
+    envoirnment {
+        IMAGE_TAG = "${BUILD_NUMBER}"
+        DOCKERHUB_USERNAME = "sabirsaheel0"
+        DOCKERHUB_REPO_NAME = "backend-capstone"
+    }
+
     stages {
 
         stage('BUILD DOCKER IMAGE') {
             steps {
-                echo 'building docker image........'
-                sh 'docker build -t sabirsaheel0/backend-capstone:${BUILD_NUMBER} .'
+                echo '---building docker image---'
+                sh 'docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${IMAGE_TAG} .'
             }
         }
 
@@ -20,7 +26,7 @@ pipeline {
                     sh 'echo ${pass} | docker login -u ${uname} --password-stdin'
                 }
 
-                sh 'docker push sabirsaheel0/backend-capstone:${BUILD_NUMBER}'
+                sh 'docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${IMAGE_TAG}'
                 sh 'docker logout'
                 echo 'pushing docker image'
             }
@@ -28,7 +34,7 @@ pipeline {
 
         stage('clean docker images') {
             steps {
-                sh 'docker rmi sabirsaheel0/backend-capstone:${BUILD_NUMBER}'
+                sh 'docker rmi s${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${IMAGE_TAG}'
             }
         }
 
