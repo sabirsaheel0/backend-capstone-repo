@@ -1,17 +1,17 @@
-# # regular dockerfile
-# FROM node:16-alpine
+# regular dockerfile
+#FROM node:16-alpine
 
-# WORKDIR /app
+#WORKDIR /app
 
-# COPY package*.json .
+#COPY package*.json .
 
-# RUN npm install --omit=dev
+#RUN npm install --omit=dev
 
-# COPY . .
+#COPY . .
 
-# EXPOSE 5000
+#EXPOSE 5000
 
-# CMD [ "node","app.js" ]
+#CMD [ "node","app.js" ]
 
 
 # distroless dockerfile
